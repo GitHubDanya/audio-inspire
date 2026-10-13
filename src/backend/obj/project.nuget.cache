@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "eBgk1k2itDY=",
+  "success": true,
+  "projectFilePath": "/home/danya/projects/web/audio-inspire/src/backend/backend.csproj",
+  "expectedPackageFiles": [
+    "/home/danya/.nuget/packages/microsoft.aspnetcore.openapi/10.0.11/microsoft.aspnetcore.openapi.10.0.11.nupkg.sha512",
+    "/home/danya/.nuget/packages/microsoft.openapi/2.7.5/microsoft.openapi.2.7.5.nupkg.sha512"
+  ],
+  "logs": []
+}
