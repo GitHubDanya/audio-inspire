@@ -1,0 +1,93 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="xuIlsuH0DuxYKO17GQH1">
+    <mxGraphModel dx="1605" dy="832" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="TjZt2FF7NNkTal9uvKal-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="api/process/audio" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="api/predict" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-20" edge="1" parent="1" source="TjZt2FF7NNkTal9uvKal-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="TjZt2FF7NNkTal9uvKal-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="185" />
+              <mxPoint x="20" y="642.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-3" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="api/process/audio" vertex="1">
+          <mxGeometry height="110" width="200" x="40" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-4" parent="TjZt2FF7NNkTal9uvKal-3" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Gets an audio file and bpm, breaks it into n sized notes, returns a file holding data about the sequence and the sequence itself" vertex="1">
+          <mxGeometry height="70" width="180" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-17" edge="1" parent="1" source="TjZt2FF7NNkTal9uvKal-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="TjZt2FF7NNkTal9uvKal-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500.03" y="185.03" />
+              <mxPoint x="500.03" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-5" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="api/predict" vertex="1">
+          <mxGeometry height="110" width="200" x="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-6" parent="TjZt2FF7NNkTal9uvKal-5" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Gets a sequence file and a phrase count, compiles a transition matrix and runs predictions, returns a new sequence file with predictions" vertex="1">
+          <mxGeometry height="70" width="180" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-8" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Sequence JSON Data File" vertex="1">
+          <mxGeometry height="120" width="440" x="40" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-9" parent="TjZt2FF7NNkTal9uvKal-8" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div align=&quot;left&quot;&gt;{&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp; &quot;bpm&quot;: bpm (int),&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp; &quot;note_length&quot;: fraction of bar (float),&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&amp;nbsp; &quot;sequence&quot;: sequence of notes (e.g. AAAAGGGGDDDDDDDD) (string)&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;}&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="420" x="10" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Get audio file&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Convert audio file to .wav&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Use Fast-Fourier Transform to extract note frequencies using NAudio&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Keep raising noise floor until at least 90% of notes are recognized&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Fill in empty notes by extending the latest note played until a change&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Package bpm, note length and sequence into a JSON payload&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Return the payload&lt;/div&gt;" vertex="1">
+          <mxGeometry height="270" width="210" x="40" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Get a sequence JSON Data File and a phrase count parameter n&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Break the sequence into phrases of n notes and possible continuations&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Compile a transition matrix based on the returned phrases&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Run a markov chain on the transition matrix and stream results into a new sequence JSON data file&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Return the payload&lt;/div&gt;" vertex="1">
+          <mxGeometry height="200" width="210" x="270" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-23" edge="1" parent="1" source="TjZt2FF7NNkTal9uvKal-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="TjZt2FF7NNkTal9uvKal-22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-30" connectable="0" parent="TjZt2FF7NNkTal9uvKal-23" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Call /api/process/audio" vertex="1">
+          <mxGeometry relative="1" x="-0.181" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User picks out file" vertex="1">
+          <mxGeometry height="60" width="120" x="630" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-25" edge="1" parent="1" source="TjZt2FF7NNkTal9uvKal-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="TjZt2FF7NNkTal9uvKal-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User gets a preview of processed file" vertex="1">
+          <mxGeometry height="60" width="120" x="630" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-27" edge="1" parent="1" source="TjZt2FF7NNkTal9uvKal-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="TjZt2FF7NNkTal9uvKal-26" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-31" connectable="0" parent="TjZt2FF7NNkTal9uvKal-27" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Call /api/predict" vertex="1">
+          <mxGeometry relative="1" x="-0.0086" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User specifies parameters for generation" vertex="1">
+          <mxGeometry height="60" width="120" x="630" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-29" edge="1" parent="1" source="TjZt2FF7NNkTal9uvKal-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="TjZt2FF7NNkTal9uvKal-28" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User gets preview of generated text" vertex="1">
+          <mxGeometry height="60" width="120" x="630" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="TjZt2FF7NNkTal9uvKal-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="User downloads result" vertex="1">
+          <mxGeometry height="60" width="120" x="630" y="540" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
